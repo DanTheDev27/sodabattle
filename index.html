@@ -7,20 +7,166 @@
         <title>Soda Battle</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- <link rel="stylesheet" href=""> -->
          <style type="text/css">
             body {background: linear-gradient(to right,#0E0E96, #FA5B3D)
             }
-            h1 {
+            #heading {
                 text-align: center;
-                margin-top: 10%;
+                margin-top: 5%;
                 color: white;
                 font-size: 5vh;
+            }
+            h1 {
+                color: white;
+                margin: 0;
+            }
+            #scores{
+                display:flex;
+                align-items: center;
+                justify-content: space-evenly;
+                margin:auto;
+                width: 60vw;
+                height:60vh;
+            }
+            #counterone {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                /* border: solid 1px; */
+                width: 10vw;
+                height: 35vh;
+            }
+            
+            #pepsidisplay {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-style: solid;
+                border-width: 3px;
+                border-radius: 10px;
+                width: 5vw;
+                height: 15vh;
+                text-align: center;
+                margin-bottom: auto;
+                margin-top: 0;
+                color: white;
+            }
+            
+            #countertwo {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                /* border: solid 1px; */
+                width: 10vw;
+                height: 35vh;
+            }
+            #bigreddisplay {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-style: solid;
+                border-width: 3px;
+                border-radius: 10px;
+                width: 5vw;
+                height: 15vh;
+                text-align: center;
+                margin-bottom: auto;
+                margin-top: 0;
+                color: white;
+            }
+            button {
+                width: 100px;
+                height:50px;
+                border-radius: 5px;
+            }
+            p {
+                margin: 0;
+                color: white;
+            }
+            #sodas {
+                height: 200px;
+                width: 200px;
+            }
+            @media screen and (max-width: 1225px) {
+                #pepsidisplay, #bigreddisplay {
+                    width: 15vw;
+                    min-height: 14vh;
+                }
+                #counterone, #countertwo {
+                    max-height: 23vh;
+                }
+                #bigredsoda { 
+                    width: 150px;
+                    text-align: center;
+                }
+                #pepsimessagebox, #bigredmessagebox {
+                    min-width: 15vw;
+                }
+                #heading {
+                    font-size: 5rem;
+                }
+                #scores {
+                    max-height: 40vh;
+                }
             }
          </style>
     </head>
     <body>
-        <h1>Pepsi vs Big Red</h1>
+        <h1 id="heading">Pepsi vs Big Red</h1>
+    <div id = scores>
+        <div id=counterone>
+            <h1>Pepsi</h1>
+            <h2 id = pepsidisplay>0</h2>
+            <button id= "deletebutton" type="button" onclick="deletebtn(), addPepsiScore()">Vote Pepsi</button>
+            <p id="pepsimessagebox"></p>
+        </div> <!--end of counter one-->
+        <img src="sodas.png" id="sodas" alt="sodas fighting"></img>
+        <div id="countertwo">
+            <h1 id="bigredsoda">Big Red</h1>
+            <h2 id = bigreddisplay>0</h2>
+            <button id= "bigRedDelete" type="button" onclick="deletebigred(), addBigRedScore()">Vote Big Red</button>
+            <p id="bigredmessagebox"></p>
+            </div>
+        </div> <!--end of counter two-->
+    </div> 
+    <script>
+        let pepsiScore = 0;
+        let bigRedScore = 0;
+        const deletePepsiBtn = document.getElementById("deletebutton");
+        const deleteBigRedBtn = document.getElementById("bigRedDelete");
+        let pepsiDisplay = document.getElementById("pepsidisplay");
+        let pepsiMessage = document.getElementById("pepsimessagebox");
+        let bigRedMessage = document.getElementById("bigredmessagebox");
+        let bigRedDisplay = document.getElementById("bigreddisplay");
+        deletePepsiBtn.addEventListener("click", deletebtn);
+        deleteBigRedBtn.addEventListener("click", deletebigred);
+        
+        let message = "Thanks for voting but we all know who the real winner is.";
+
+        function addPepsiScore() {
+            pepsiDisplay.textContent = ++pepsiScore;
+            console.log("The score is " + pepsiScore + ".");
+        }
+
+        function addBigRedScore() {
+            bigRedDisplay.textContent = ++bigRedScore;
+            console.log(bigRedScore);
+        }
+
+        function deletebtn() {
+            deletePepsiBtn.remove();
+            deleteBigRedBtn.remove();
+            pepsiMessage.textContent = message;
+        }
+
+        function deletebigred() {
+            deleteBigRedBtn.remove();
+            deletePepsiBtn.remove();
+            bigRedMessage.textContent = message;
+        }
+    </script>
     </body>
 </html>
     
